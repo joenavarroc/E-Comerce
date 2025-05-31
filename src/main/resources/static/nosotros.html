@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vivero Online</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  
+
+  <!-- Font Awesome (íconos) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+
+
+
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar d-flex flex-column">
+  <div class="logo-container">
+      <a href="index.html" class="logo-link">
+          <img src="/img/logo.jpeg" alt="Logo" class="mb-2">
+      </a>
+  </div>
+  <h4 class="text-center">Menu</h4>
+  <div class="dropdown">
+    <input type="checkbox" id="toggle-plantas" hidden>
+    <label for="toggle-plantas" class="dropdown-toggle">Plantas</label>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="plantas-interior.html">Plantas de Interior</a></li>
+      <li><a class="dropdown-item" href="plantas-exterior.html">Plantas de Exterior</a></li>
+    </ul>
+  </div>  
+  <a href="macetas.html">Macetas</a>
+  <a href="souvenirs.html">Souvenirs</a>
+  <a href="suculentas.html">Suculentas</a>
+  <a href="nosotros.html">Nosotros</a>
+
+
+
+
+    <!-- Sección de Contacto con íconos -->
+    <div class="mt-auto d-flex justify-content-end gap-3 p-3">
+        <a href="https://www.facebook.com/share/19GsJuTuTW/" target="_blank" class="text-decoration-none">
+            <i class="fab fa-facebook fa-2x" title="Facebook"></i>
+        </a>
+        <a href="https://www.instagram.com" target="_blank" class="text-decoration-none">
+            <i class="fab fa-instagram fa-2x" title="Instagram"></i>
+        </a>
+        <a href="mailto:contacto@vivero.com" class="text-decoration-none">
+            <i class="fas fa-envelope fa-2x" title="Email"></i>
+        </a>
+    </div>
+</div>
+
+
+<!-- Navbar superior -->
+<nav class="navbar navbar-expand-lg navbar-custom shadow-sm px-4">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center gap-3 ms-auto">
+      <!-- Buscador al lado del carrito -->
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" style="max-width: 300px;" placeholder="Buscar productos..." aria-label="Buscar">
+      </form>
+
+      <!-- Icono carrito -->
+      <a href="#" class="icon-link" title="Carrito" data-bs-toggle="modal" data-bs-target="#cartModal">
+        <i class="fas fa-shopping-cart fs-5"></i>
+      </a>
+
+      <!-- Icono cuenta -->
+      <a href="#" class="icon-link" title="Cuenta" data-bs-toggle="modal" data-bs-target="#authModal">
+        <i class="fas fa-user fs-5"></i>
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Modal de Inicio de Sesión / Registro -->
+<div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="authModalLabel">Iniciar sesión</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario de inicio de sesión -->
+                <div id="login-form">
+                    <form>
+                        <div class="mb-3">
+                            <label for="login-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="login-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="login-password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                        <div class="mt-2">
+                          <a href="#" onclick="switchToForgotPassword()">¿Olvidaste tu contraseña?</a>
+                        </div>
+                    </form>
+                    <div class="mt-3">
+                        <p>No tienes cuenta? <a href="#" id="go-to-register">Registrarse</a></p>
+                    </div>
+                </div>
+                
+                <!-- Formulario de registro -->
+                <div id="register-form" style="display: none;">
+                    <form>
+                        <div class="mb-3">
+                            <label for="register-name" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="register-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-lastname" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="register-lastname" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-phone" class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="register-phone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="register-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="register-password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-confirm-password" class="form-label">Confirmar contraseña</label>
+                            <input type="password" class="form-control" id="register-confirm-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                    </form>
+                    <div class="mt-3">
+                        <p>Ya tienes cuenta? <a href="#" id="go-to-login">Iniciar sesión</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <!-- Modal: Recuperar Contraseña -->
+  <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="modal-content" onsubmit="handlePasswordReset(event)">
+        <div class="modal-header">
+          <h5 class="modal-title" id="forgotPasswordModalLabel">Recuperar contraseña</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <p>Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.</p>
+          <div class="mb-3">
+            <label for="reset-email" class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" id="reset-email" required>
+          </div>
+          <div id="reset-message" class="text-success" style="display: none;"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Enviar enlace</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<!-- Modal Carrito -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cartModalLabel">Carrito de Compras</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Lista de productos en el carrito -->
+                <ul id="cart-items" class="list-group">
+                    <!-- Los artículos del carrito se agregarán dinámicamente aquí -->
+                </ul>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <strong>Total: </strong><span id="cart-total">0</span> $
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="checkoutBtn">Comprar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Procesar Pago -->
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="paymentModalLabel">Método de Pago</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+              <!-- Opciones de pago -->
+              <form id="payment-form">
+                  <div class="mb-3">
+                      <label for="payment-method" class="form-label">Selecciona un método de pago</label>
+                      <select class="form-select" id="payment-method" required>
+                          <option value="card">Tarjeta de Crédito</option>
+                          <option value="transfer">Transferencia Bancaria</option>
+                          <option value="cash">Pago en Efectivo</option>
+                          <option value="mercado-pago">Mercado Pago</option>
+                      </select>
+                  </div>
+
+                  <!-- Tarjeta de Crédito -->
+                  <div id="card-payment" class="payment-option" style="display:none;">
+                      <div class="mb-3">
+                          <label for="card-number" class="form-label">Número de tarjeta</label>
+                          <input type="text" class="form-control" id="card-number" placeholder="#### #### #### ####" required>
+                      </div>
+                      <div class="mb-3">
+                          <label for="card-expiry" class="form-label">Fecha de expiración</label>
+                          <input type="text" class="form-control" id="card-expiry" placeholder="MM/AA" required>
+                      </div>
+                      <div class="mb-3">
+                          <label for="card-cvc" class="form-label">CVC</label>
+                          <input type="text" class="form-control" id="card-cvc" placeholder="###" required>
+                      </div>
+                  </div>
+
+                  <!-- Transferencia Bancaria -->
+                  <div id="transfer-payment" class="payment-option" style="display:none;">
+                      <p>Por favor, realiza la transferencia bancaria a la siguiente cuenta:</p>
+                      <p>Banco XYZ - Cuenta: 1234567890 - CBU: 9876543210</p>
+                  </div>
+
+                  <!-- Pago en Efectivo -->
+                  <div id="cash-payment" class="payment-option" style="display:none;">
+                      <p>Por favor, paga en efectivo en nuestra tienda física o realiza el pago en el punto de venta.</p>
+                  </div>
+
+                  <!-- Mercado Pago -->
+                  <div id="mercado-pago-payment" class="payment-option" style="display:none;">
+                    <p>Serás redirigido a Mercado Pago para completar tu compra.</p>
+                    <img src="https://www.mercadopago.com/org-img/MP3/home/logomp3.gif" alt="Mercado Pago" style="width: 150px; margin: 10px auto; display: block;">
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="submitPaymentBtn">Confirmar Pago</button>
+            <button type="button" class="btn btn-success" id="payWithMP" style="display: none;">Pagar con Mercado Pago</button>
+        </div>
+        
+      </div>
+  </div>
+</div>
+
+
+<!-- Contenido principal -->
+<div class="main-content">
+
+  <div class="container mt-4">
+
+    <section class="main-content">
+        <div class="container">
+          <h1>Sobre Nosotros</h1>
+          <p>En <strong>Vivero Fretoplanton</strong> nos apasionan las plantas y creemos en su poder para transformar espacios y conectar con la naturaleza.</p>
+          
+          <p>Somos un vivero familiar con más de 10 años de experiencia, dedicado al cultivo y venta de plantas de interior, exterior, suculentas, árboles frutales y más. Nuestro equipo está formado por amantes de la jardinería que estarán encantados de ayudarte a encontrar la planta ideal para tu hogar o proyecto.</p>
+      
+          <p>Además, promovemos prácticas sustentables, utilizamos fertilizantes orgánicos y fomentamos el uso responsable del agua. Queremos que cada planta que te lleves sea el comienzo de una historia verde en tu vida.</p>
+      
+          <h3>Nuestra Misión</h3>
+          <p>Fomentar el amor por la naturaleza ofreciendo plantas de calidad, asesoramiento personalizado y un servicio cercano.</p>
+      
+          <h3>Nuestros Valores</h3>
+          <ul>
+            <li>🌱 Amor por la naturaleza</li>
+            <li>🤝 Atención personalizada</li>
+            <li>🌍 Compromiso ecológico</li>
+            <li>📚 Educación y asesoramiento</li>
+          </ul>
+        </div>
+      </section>
+      
+
+
+
+
+
+
+    
+
+            <!-- Icono flotante de WhatsApp -->
+            <a href="https://wa.me/5491123193091" target="_blank" id="whatsapp-icon">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 60px;">
+              </a>
+  
+        </div>
+      </div>
+  </div>
+
+
+
+<footer class="bg-dark text-white text-center py-4 mt-5">
+  <div class="container">
+    <p class="mb-1">
+      &copy; <span class="year"></span> Fretoplanton. All rights reserved.<br>
+      Developed by <strong>Joe Navarro</strong> | Design & Technology by <em>The Big Bang Technology</em>
+    </p>
+    <a href="#" class="text-decoration-none text-white-50">View Terms & Conditions</a>
+  </div>
+</footer>
+
+
+
+
+
+  <!-- Bootstrap JS y Popper.js (necesario para los modales) -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="/js/scripts.js"></script>
+
+
+</body>
+</html>

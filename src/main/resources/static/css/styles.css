@@ -1,0 +1,213 @@
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
+
+
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+}
+
+.sidebar {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  background-color: #052e1d;
+  color: white;
+  padding-top: 1rem;
+}
+
+.sidebar a, .sidebar .dropdown-toggle {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: block;
+}
+
+.sidebar a:hover, .sidebar .dropdown-toggle:hover {
+  background-color: #1b5e20;
+}
+
+.main-content {
+  margin-left: 250px;
+  padding: 1rem;
+}
+
+.navbar {
+  margin-left: 250px;
+}
+
+.form-control {
+  border-radius: 20px;
+}
+
+.icon-link {
+  color: #2e7d32;
+  font-weight: bold;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+.icon-link:hover {
+  color: #1b5e20;
+}
+
+/* Ocultar el menú por defecto */
+.sidebar .dropdown-menu {
+display: none;
+position: static;
+background-color: #2e7d32;
+border: none;
+padding-left: 1rem;
+}
+
+/* Mostrar el menú cuando el checkbox esté activado */
+#toggle-plantas:checked + .dropdown-toggle + .dropdown-menu {
+display: block;
+}
+
+/* Opcional: estilizar el label como si fuera un link */
+.sidebar .dropdown-toggle {
+color: white;
+text-decoration: none;
+padding: 10px 20px;
+display: block;
+cursor: pointer;
+}
+
+.sidebar .dropdown-toggle:hover {
+background-color: #1b5e20;
+}
+
+
+.sidebar .dropdown-item {
+  color: white;
+}
+
+.sidebar .dropdown-item:hover {
+  background-color: #1b5e20;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+
+  .main-content, .navbar {
+    margin-left: 0;
+  }
+}
+
+
+#whatsapp-icon {
+    position: fixed;
+    bottom: 20px; /* Ajusta la distancia desde la parte inferior */
+    right: -200px;  /* Ajusta la distancia desde la parte derecha */
+    z-index: 9999; /* Asegura que el icono esté por encima de otros elementos */
+  }
+  
+  #whatsapp-icon img {
+    width: 60px; /* Tamaño del icono */
+    border-radius: 50%; /* Hacer el icono redondo */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    transition: transform 0.3s ease-in-out; /* Efecto de transición */
+  }
+  
+  #whatsapp-icon:hover img {
+    transform: scale(1.1); /* Efecto de aumento al pasar el ratón */
+  }
+  
+
+  .carousel-item img {
+    max-height: 600px;
+    object-fit: cover;
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+  width: 40px; /* Reduce el ancho del área activa */
+  height: 40px; /* Opcional si también querés bajarle el alto */
+  top: 50%;     /* Centrado vertical */
+  transform: translateY(-50%);
+  opacity: 0.7; /* Menos intrusivos visualmente */
+  z-index: 1;   /* Asegurate de que estén por encima pero no tapen los inputs */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 20px 20px; /* Icono más pequeño */
+  background-color: rgba(0, 0, 0, 0.5); /* fondo oscuro semitransparente */
+  border-radius: 10%; /* que se vea como un círculo */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6); /* sombra sutil */
+  padding: 10px; /* espacio alrededor del icono */
+}
+
+
+  .logo-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.logo-container a {
+    display: inline-block;
+}
+
+
+
+.card-img-top {
+  object-fit: contain;
+  height: 200px;
+  width: 100%;
+  /*background-color: #f8f9fa;  color de fondo por si hay espacio vacío */
+}
+
+
+.navbar-custom {
+  background-color: #052e1d; /* verde suave */
+  padding-top: 10px;
+
+}
+
+
+.card-borde {
+  border: 2px solid #052e1d; /* verde */
+  border-radius: 8px; /* opcional, para bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* sombra opcional */
+}
+
+footer {
+  position: relative;
+  z-index: 1;
+  margin-left: 250px;
+} 
+
+.main-content h1 {
+  font-family: 'Aclonica', sans-serif;
+  color: #052e1d;
+}
+
+.sidebar a.logo-link:hover {
+  background-color: transparent !important;
+}
+
+.sidebar a:hover, .sidebar .dropdown-toggle:hover {
+  background-color: #1b5e20;
+}
+

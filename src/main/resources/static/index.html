@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vivero Online</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  
+
+  <!-- Font Awesome (íconos) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar d-flex flex-column">
+  <div class="logo-container">
+      <a href="index.html" class="logo-link">
+          <img src="/img/logo.jpeg" alt="Logo" class="mb-2">
+      </a>
+  </div>
+  <h4 class="text-center">Menu</h4>
+  <div class="dropdown">
+    <input type="checkbox" id="toggle-plantas" hidden>
+    <label for="toggle-plantas" class="dropdown-toggle">Plantas</label>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="plantas-interior.html">Plantas de Interior</a></li>
+      <li><a class="dropdown-item" href="plantas-exterior.html">Plantas de Exterior</a></li>
+    </ul>
+  </div>  
+  <a href="macetas.html">Macetas</a>
+  <a href="souvenirs.html">Souvenirs</a>
+  <a href="suculentas.html">Suculentas</a>
+  <a href="nosotros.html">Nosotros</a>
+ 
+
+
+
+    <!-- Sección de Contacto con íconos -->
+    <div class="mt-auto d-flex justify-content-end gap-3 p-3">
+        <a href="https://www.facebook.com/share/19GsJuTuTW/" target="_blank" class="text-decoration-none">
+            <i class="fab fa-facebook fa-2x" title="Facebook"></i>
+        </a>
+        <a href="https://www.instagram.com" target="_blank" class="text-decoration-none">
+            <i class="fab fa-instagram fa-2x" title="Instagram"></i>
+        </a>
+        <a href="mailto:contacto@vivero.com" class="text-decoration-none">
+            <i class="fas fa-envelope fa-2x" title="Email"></i>
+        </a>
+    </div>
+</div>
+
+
+<!-- Navbar superior -->
+<nav class="navbar navbar-expand-lg navbar-custom shadow-sm px-4">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center gap-3 ms-auto">
+      <!-- Buscador al lado del carrito -->
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" style="max-width: 300px;" placeholder="Buscar productos..." aria-label="Buscar">
+      </form>
+
+      <!-- Icono carrito -->
+      <a href="#" class="icon-link" title="Carrito" data-bs-toggle="modal" data-bs-target="#cartModal">
+        <i class="fas fa-shopping-cart fs-5"></i>
+      </a>
+
+      <!-- Icono cuenta -->
+      <a href="#" class="icon-link" title="Cuenta" data-bs-toggle="modal" data-bs-target="#authModal">
+        <i class="fas fa-user fs-5"></i>
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Modal de Inicio de Sesión / Registro -->
+<div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="authModalLabel">Iniciar sesión</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario de inicio de sesión -->
+                <div id="login-form">
+                    <form>
+                        <div class="mb-3">
+                            <label for="login-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="login-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="login-password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                        <div class="mt-2">
+                          <a href="#" onclick="switchToForgotPassword()">¿Olvidaste tu contraseña?</a>
+                        </div>                                        
+                    </form>
+                    <div class="mt-3">
+                        <p>No tienes cuenta? <a href="#" id="go-to-register">Registrarse</a></p>
+                    </div>
+                </div>
+
+                <!-- Formulario de registro -->
+                <div id="register-form" style="display: none;">
+                    <form>
+                        <div class="mb-3">
+                            <label for="register-name" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="register-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-lastname" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="register-lastname" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-phone" class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="register-phone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="register-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="register-password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-confirm-password" class="form-label">Confirmar contraseña</label>
+                            <input type="password" class="form-control" id="register-confirm-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                    </form>
+                    <div class="mt-3">
+                        <p>Ya tienes cuenta? <a href="#" id="go-to-login">Iniciar sesión</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <!-- Modal: Recuperar Contraseña -->
+  <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="modal-content" onsubmit="handlePasswordReset(event)">
+        <div class="modal-header">
+          <h5 class="modal-title" id="forgotPasswordModalLabel">Recuperar contraseña</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <p>Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.</p>
+          <div class="mb-3">
+            <label for="reset-email" class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" id="reset-email" required>
+          </div>
+          <div id="reset-message" class="text-success" style="display: none;"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Enviar enlace</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<!-- Modal Carrito -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cartModalLabel">Carrito de Compras</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Lista de productos en el carrito -->
+                <ul id="cart-items" class="list-group">
+                    <!-- Los artículos del carrito se agregarán dinámicamente aquí -->
+                </ul>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <strong>Total: </strong><span id="cart-total">0</span> $
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="checkoutBtn">Comprar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Procesar Pago -->
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="paymentModalLabel">Método de Pago</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+              <!-- Opciones de pago -->
+              <form id="payment-form">
+                  <div class="mb-3">
+                      <label for="payment-method" class="form-label">Selecciona un método de pago</label>
+                      <select class="form-select" id="payment-method" required>
+                          <option value="card">Tarjeta de Crédito</option>
+                          <option value="transfer">Transferencia Bancaria</option>
+                          <option value="cash">Pago en Efectivo</option>
+                          <option value="mercado-pago">Mercado Pago</option>
+                      </select>
+                  </div>
+
+                  <!-- Tarjeta de Crédito -->
+                  <div id="card-payment" class="payment-option" style="display:none;">
+                      <div class="mb-3">
+                          <label for="card-number" class="form-label">Número de tarjeta</label>
+                          <input type="text" class="form-control" id="card-number" placeholder="#### #### #### ####" required>
+                      </div>
+                      <div class="mb-3">
+                          <label for="card-expiry" class="form-label">Fecha de expiración</label>
+                          <input type="text" class="form-control" id="card-expiry" placeholder="MM/AA" required>
+                      </div>
+                      <div class="mb-3">
+                          <label for="card-cvc" class="form-label">CVC</label>
+                          <input type="text" class="form-control" id="card-cvc" placeholder="###" required>
+                      </div>
+                  </div>
+
+                  <!-- Transferencia Bancaria -->
+                  <div id="transfer-payment" class="payment-option" style="display:none;">
+                      <p>Por favor, realiza la transferencia bancaria a la siguiente cuenta:</p>
+                      <p>Banco XYZ - Cuenta: 1234567890 - CBU: 9876543210</p>
+                  </div>
+
+                  <!-- Pago en Efectivo -->
+                  <div id="cash-payment" class="payment-option" style="display:none;">
+                      <p>Por favor, paga en efectivo en nuestra tienda física o realiza el pago en el punto de venta.</p>
+                  </div>
+
+                  <!-- Mercado Pago -->
+                  <div id="mercado-pago-payment" class="payment-option" style="display:none;">
+                    <p>Serás redirigido a Mercado Pago para completar tu compra.</p>
+                    <img src="https://www.mercadopago.com/org-img/MP3/home/logomp3.gif" alt="Mercado Pago" style="width: 150px; margin: 10px auto; display: block;">
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="submitPaymentBtn">Confirmar Pago</button>
+            <button type="button" class="btn btn-success" id="payWithMP" style="display: none;">Pagar con Mercado Pago</button>
+        </div>
+        
+      </div>
+  </div>
+</div>
+
+
+<!-- Contenido principal -->
+<div class="main-content">
+  <h1>Bienvenido</h1>
+  <p>Explorá nuestras categorías de productos naturales y decoración para tu jardín.</p>
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://cdn.pixabay.com/photo/2024/03/08/07/31/ai-generated-8620057_1280.jpg" style="filter: brightness(60%);" class="d-block w-100" alt="Plantas para oficina">
+        <div class="carousel-caption d-none d-md-block">
+          <h3>Plantas para la oficina</h3>
+          <p>Descubrí nuestra selección de plantas de interiores, terminación de calidad para un ambiente laboral.</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="https://cdn.pixabay.com/photo/2024/08/10/17/00/ai-generated-8959804_1280.jpg" style="filter: brightness(60%);" class="d-block w-100" alt="Plantas para el hogar">
+        <div class="carousel-caption d-none d-md-block">
+          <h3>Plantas para el hogar</h3>
+          <p>Nuestra mejor selección para tu ambiente, de relax y confort.</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="https://cdn.pixabay.com/photo/2023/12/17/09/47/door-8453898_960_720.jpg" style="filter: brightness(60%);" class="d-block w-100" alt="Decoración natural">
+        <div class="carousel-caption d-none d-md-block">
+          <h3>Decoración natural</h3>
+          <p>Transformá tus espacios con vida verde y estilo único.</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="https://cdn.pixabay.com/photo/2016/11/21/16/05/cacti-1846147_1280.jpg" style="filter: brightness(60%);" class="d-block w-100" alt="Cactus y suculentas">
+        <div class="carousel-caption d-none d-md-block">
+          <h3>Cactus y suculentas</h3>
+          <p>Ideales para espacios pequeños y cuidados mínimos.</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  
+
+  <div class="container mt-4">
+
+<!-- Banner informativo con margen inferior -->
+<div class="container-fluid bg-light py-4 border-top border-bottom mb-5">
+  <div class="row text-center text-muted fs-5">
+    <div class="col-md-6 d-flex justify-content-center align-items-center mb-3 mb-md-0">
+      <i class="bi bi-truck me-3 fs-3"></i>
+      <span>Envíos a domicilio en capital</span>
+    </div>
+    <div class="col-md-6 d-flex justify-content-center align-items-center">
+      <i class="bi bi-credit-card-2-front me-3 fs-3"></i>
+      <span>Métodos de pago: tarjetas, transferencias y efectivo</span>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Título -->
+<h2 class="text-center my-5 text-success">Productos Destacados</h2>
+
+<!-- Carrusel -->
+<div id="productosDestacados" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+  <div class="carousel-inner">
+
+<!-- Slide 1 -->
+<div class="carousel-item active">
+  <div class="row justify-content-center">
+    
+    <!-- Producto 1 -->
+    <div class="col-md-4">
+      <div class="card h-100 card-borde">
+        <img src="https://cdn.pixabay.com/photo/2012/10/19/00/20/vases-62020_1280.jpg" class="card-img-top" alt="Macetas de cerámica" onclick="document.getElementById('modalProd1').showModal()">
+        <div class="card-body">
+          <h6 class="card-title">Macetas de Cerámica</h6>
+          <p class="card-text">$1.500</p>
+          <div class="d-flex mb-2">
+            <label class="me-2">Cant.:</label>
+            <input type="number" min="1" value="0" class="form-control form-control-sm" style="width: 60px;">
+          </div>
+          <div class="d-grid gap-2">
+            <button class="btn btn-success w-100">Añadir al carrito</button>
+            <button class="btn btn-warning btn-edit-carousel" data-id="modalProd1">Editar</button>
+          </div>
+        </div>
+      </div>
+    </div>    
+    <dialog id="modalProd1">
+      <h2>Macetas de Cerámica</h2>
+      <img src="https://cdn.pixabay.com/photo/2012/10/19/00/20/vases-62020_1280.jpg" style="width: 100%;">
+      <p>Macetas elegantes de cerámica, ideales para interior.</p>
+      <p><strong>Precio:</strong> $1.500</p>
+      <button onclick="document.getElementById('modalProd1').close()">Cerrar</button>
+    </dialog>
+
+    <!-- Producto 2 -->
+    <div class="col-md-4">
+      <div class="card h-100 card-borde">
+        <img src="https://cdn.pixabay.com/photo/2021/08/26/17/07/hanging-pots-6576645_1280.jpg" class="card-img-top" alt="Macetas Colgantes" onclick="document.getElementById('modalProd2').showModal()">
+        <div class="card-body">
+          <h6 class="card-title">Macetas Colgantes</h6>
+          <p class="card-text">$2.300</p>
+          <div class="d-flex mb-2">
+            <label class="me-2">Cant.:</label>
+            <input type="number" min="1" value="0" class="form-control form-control-sm" style="width: 60px;">
+          </div>
+          <div class="d-grid gap-2">
+            <button class="btn btn-success w-100">Añadir al carrito</button>
+            <button class="btn btn-warning btn-edit-carousel" data-id="modalProd2">Editar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <dialog id="modalProd2">
+      <h2>Macetas Colgantes</h2>
+      <img src="https://cdn.pixabay.com/photo/2021/08/26/17/07/hanging-pots-6576645_1280.jpg" style="width: 100%;">
+      <p>Perfectas para decorar balcones y espacios reducidos.</p>
+      <p><strong>Precio:</strong> $2.300</p>
+      <button onclick="document.getElementById('modalProd2').close()">Cerrar</button>
+    </dialog>
+
+    <!-- Producto 3 -->
+    <div class="col-md-4">
+      <div class="card h-100 card-borde">
+        <img src="https://cdn.pixabay.com/photo/2017/09/10/09/56/fat-plants-2734948_1280.jpg" class="card-img-top" alt="Plantas Suculentas" onclick="document.getElementById('modalProd3').showModal()">
+        <div class="card-body">
+          <h6 class="card-title">Plantas Suculentas</h6>
+          <p class="card-text">$800</p>
+          <div class="d-flex mb-2">
+            <label class="me-2">Cant.:</label>
+            <input type="number" min="1" value="0" class="form-control form-control-sm" style="width: 60px;">
+          </div>
+          <div class="d-grid gap-2">
+            <button class="btn btn-success w-100">Añadir al carrito</button>
+            <button class="btn btn-warning btn-edit-carousel" data-id="modalProd3">Editar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <dialog id="modalProd3">
+      <h2>Plantas Suculentas</h2>
+      <img src="https://cdn.pixabay.com/photo/2017/09/10/09/56/fat-plants-2734948_1280.jpg" style="width: 100%;">
+      <p>Fáciles de cuidar y súper decorativas.</p>
+      <p><strong>Precio:</strong> $800</p>
+      <button onclick="document.getElementById('modalProd3').close()">Cerrar</button>
+    </dialog>
+
+  </div>
+</div>
+
+    
+
+   <!-- Slide 2 -->
+<div class="carousel-item">
+  <div class="row justify-content-center">
+    
+    <!-- Producto 4 -->
+    <div class="col-md-4">
+      <div class="card h-100 card-borde">
+        <img src="https://cdn.pixabay.com/photo/2018/06/20/12/17/vases-3486434_1280.jpg" class="card-img-top" alt="Macetas Decorativas" onclick="document.getElementById('modalProd4').showModal()">
+        <div class="card-body">
+          <h6 class="card-title">Macetas Decorativas</h6>
+          <p class="card-text">$2.300</p>
+          <div class="d-flex mb-2">
+            <label class="me-2">Cant.:</label>
+            <input type="number" min="1" value="0" class="form-control form-control-sm" style="width: 60px;">
+          </div>
+          <div class="d-grid gap-2">
+            <button class="btn btn-success w-100">Añadir al carrito</button>
+            <button class="btn btn-warning btn-edit-carousel" data-id="modalProd4">Editar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <dialog id="modalProd4">
+      <h2>Macetas Decorativas</h2>
+      <img src="https://cdn.pixabay.com/photo/2018/06/20/12/17/vases-3486434_1280.jpg" style="width: 100%;">
+      <p>Elegantes macetas blancas para decoración interior moderna.</p>
+      <p><strong>Precio:</strong> $2.300</p>
+      <button onclick="document.getElementById('modalProd4').close()">Cerrar</button>
+    </dialog>
+
+    <!-- Producto 5 -->
+    <div class="col-md-4">
+      <div class="card h-100 card-borde">
+        <img src="https://cdn.pixabay.com/photo/2018/04/11/11/21/plants-3310274_1280.jpg" class="card-img-top" alt="Plantas de Interior" onclick="document.getElementById('modalProd5').showModal()">
+        <div class="card-body">
+          <h6 class="card-title">Plantas de Interior</h6>
+          <p class="card-text">$3.000</p>
+          <div class="d-flex mb-2">
+            <label class="me-2">Cant.:</label>
+            <input type="number" min="1" value="0" class="form-control form-control-sm" style="width: 60px;">
+          </div>
+          <div class="d-grid gap-2">
+            <button class="btn btn-success w-100">Añadir al carrito</button>
+            <button class="btn btn-warning btn-edit-carousel" data-id="modalProd5">Editar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <dialog id="modalProd5">
+      <h2>Plantas de Interior</h2>
+      <img src="https://cdn.pixabay.com/photo/2018/04/11/11/21/plants-3310274_1280.jpg" style="width: 100%;">
+      <p>Plantas naturales ideales para darle vida a tu hogar.</p>
+      <p><strong>Precio:</strong> $3.000</p>
+      <button onclick="document.getElementById('modalProd5').close()">Cerrar</button>
+    </dialog>
+
+    <!-- Producto 6 -->
+    <div class="col-md-4">
+      <div class="card h-100 card-borde">
+        <img src="https://cdn.pixabay.com/photo/2021/11/28/15/16/succulent-6830488_1280.jpg" class="card-img-top" alt="Suculenta en Maceta" onclick="document.getElementById('modalProd6').showModal()">
+        <div class="card-body">
+          <h6 class="card-title">Suculenta en Maceta</h6>
+          <p class="card-text">$1.800</p>
+          <div class="d-flex mb-2">
+            <label class="me-2">Cant.:</label>
+            <input type="number" min="1" value="0" class="form-control form-control-sm" style="width: 60px;">
+          </div>
+          <div class="d-grid gap-2">
+            <button class="btn btn-success w-100">Añadir al carrito</button>
+            <button class="btn btn-warning btn-edit-carousel" data-id="modalProd6">Editar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <dialog id="modalProd6">
+      <h2>Suculenta en Maceta</h2>
+      <img src="https://cdn.pixabay.com/photo/2021/11/28/15/16/succulent-6830488_1280.jpg" style="width: 100%;">
+      <p>Suculentas decorativas perfectas para espacios reducidos.</p>
+      <p><strong>Precio:</strong> $1.800</p>
+      <button onclick="document.getElementById('modalProd6').close()">Cerrar</button>
+    </dialog>
+
+<!-- Modal Bootstrap para editar producto -->
+<div class="modal fade" id="productFormModal" tabindex="-1" aria-labelledby="productFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form class="modal-content" onsubmit="saveProduct(event)">
+      <div class="modal-header">
+        <h5 class="modal-title" id="productFormModalLabel">Editar Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="product-id">
+        <div class="mb-3">
+          <label class="form-label">Nombre del producto</label>
+          <input type="text" class="form-control" id="product-name" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Precio</label>
+          <input type="text" class="form-control" id="product-price" required>
+        </div>
+        <div class="mb-3">
+          <label for="product-image-url" class="form-label">URL de Imagen</label>
+          <input type="url" class="form-control" id="product-image-url" placeholder="https://...">
+        </div>
+        <div class="mb-3">
+          <label for="product-image-file" class="form-label">O subir imagen desde tu dispositivo</label>
+          <input type="file" class="form-control" id="product-image-file" accept="image/*">
+        </div>  
+        <div class="mb-3">
+          <label class="form-label">Descripción</label>
+          <textarea class="form-control" id="product-description" rows="3" required></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+  <!-- Flechas -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#productosDestacados" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#productosDestacados" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+
+
+<div class="d-flex gap-5 flex-wrap mt-4 mx-4">
+
+  <!-- Tarjeta 1 -->
+  <div class="card editable-card" style="width: 18rem;">
+    <img src="https://cdn.pixabay.com/photo/2017/09/09/18/25/living-room-2732939_960_720.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <p class="card-text">Pequeños espacios naturales hacen la diferencia, más confortable, natural y simple.</p>
+      <button class="btn btn-sm btn-warning btn-edit-info">Editar</button>
+    </div>
+  </div>
+
+  <!-- Tarjeta 2 -->
+  <div class="card editable-card" style="width: 18rem;">
+    <img src="https://cdn.pixabay.com/photo/2022/01/22/22/41/door-6959343_960_720.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <p class="card-text">Mejora la recepción de tu entrada ya sea un negocio oficina o tu hogar.</p>
+      <button class="btn btn-sm btn-warning btn-edit-info">Editar</button>
+    </div>
+  </div>
+
+  <!-- Tarjeta 3 -->
+  <div class="card editable-card" style="width: 18rem;">
+    <img src="https://cdn.pixabay.com/photo/2019/09/01/19/19/interior-4445875_1280.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <p class="card-text">Podés compartir espacio con la naturaleza, respirar y sentir esa conexión.</p>
+      <button class="btn btn-sm btn-warning btn-edit-info">Editar</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- modal de tarjetas -->
+<div class="modal fade" id="editInfoModal" tabindex="-1" aria-labelledby="editInfoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form class="modal-content" onsubmit="saveCardEdit(event)">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editInfoModalLabel">Editar Tarjeta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="edit-card-index">
+        <div class="mb-3">
+          <label for="product-image-url" class="form-label">URL de Imagen</label>
+          <input type="url" class="form-control" id="edit-image-url" placeholder="https://...">
+        </div>
+        <div class="mb-3">
+          <label for="product-image-file" class="form-label">O subir imagen desde tu dispositivo</label>
+          <input type="file" class="form-control" id="edit-image-file" accept="image/*">
+        </div>  
+        <div class="mb-3">
+          <label class="form-label">Texto</label>
+          <textarea class="form-control" id="edit-text" rows="3" required></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
+    
+
+            <!-- Icono flotante de WhatsApp -->
+            <a href="https://wa.me/5491123193091" target="_blank" id="whatsapp-icon">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 60px;">
+              </a>
+  
+        </div>
+      </div>
+  </div>
+
+
+
+
+
+<footer class="bg-dark text-white text-center py-4 mt-5">
+  <div class="container">
+    <p class="mb-1">
+      &copy; <span class="year"></span> Fretoplanton. All rights reserved.<br>
+      Developed by <strong>Joe Navarro</strong> | Design & Technology by <em>The Big Bang Technology</em>
+    </p>
+    <a href="#" class="text-decoration-none text-white-50">View Terms & Conditions</a>
+  </div>
+</footer>
+
+  <!-- Bootstrap JS y Popper.js (necesario para los modales) -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="/js/scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+</body>
+</html>
